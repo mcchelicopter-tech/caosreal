@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caos Real: O Colapso da Ordem | Livro de Hard Sci-Fi</title>
+    <style>
+        :root {
+            --bg-color: #06090f;
+            --panel-color: #0d1117;
+            --accent-blue: #00f3ff;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --neon-glow: 0 0 10px rgba(0, 243, 255, 0.5), 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Fundo com linhas de dados */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 24, 38, 0) 95%, rgba(0, 243, 255, 0.03) 95%),
+                        linear-gradient(90deg, rgba(18, 24, 38, 0) 95%, rgba(0, 243, 255, 0.03) 95%);
+            background-size: 40px 40px;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+
+        .author-tag {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-blue);
+            text-shadow: var(--neon-glow);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .main-grid {
+                grid-template-columns: 400px 1fr;
+                align-items: start;
+            }
+        }
+
+        .book-cover-area {
+            text-align: center;
+            position: relative;
+        }
+
+        .book-cover {
+            width: 100%;
+            max-width: 350px;
+            height: 500px;
+            object-fit: cover;
+            background-color: #161b22;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 15px rgba(0, 243, 255, 0.1);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            transition: transform 0.3s ease;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .book-cover:hover {
+            transform: scale(1.02);
+        }
+
+        .cta-container {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            background-color: #ff9900;
+            color: #111 !important;
+            text-align: center;
+            padding: 16px 20px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none !important;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(255, 153, 0, 0.3);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button.alt-lang {
+            background-color: transparent;
+            color: var(--text-main) !important;
+            border: 2px solid var(--accent-blue);
+            box-shadow: 0 4px 15px rgba(0, 243, 255, 0.1);
+        }
+
+        .cta-button:hover {
+            background-color: #ffb340;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 153, 0, 0.4);
+        }
+
+        .cta-button.alt-lang:hover {
+            background-color: rgba(0, 243, 255, 0.1);
+            color: var(--accent-blue) !important;
+            box-shadow: var(--neon-glow);
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-panel {
+            background-color: var(--panel-color);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            display: block !important;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent-blue);
+            padding-left: 12px;
+        }
+
+        .quote-box {
+            font-style: italic;
+            border-left: 3px solid rgba(255,255,255,0.2);
+            padding-left: 15px;
+            color: var(--text-muted);
+            margin: 20px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: var(--neon-glow);
+            background-color: #000;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: 0;
+            background-color: #000;
+        }
+
+        .tech-spec-list {
+            list-style: none;
+        }
+
+        .tech-spec-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+        }
+
+        .tech-spec-list li span {
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            background-color: #04060a;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span class="author-tag">Mauricio Custarella</span>
+        <h1>Caos Real</h1>
+        <div class="subtitle">O Colapso da Ordem</div>
+    </header>
+
+    <div class="container">
+        <div class="main-grid">
+            
+            <div class="book-cover-area">
+                <img src="capa.jpg" alt="Capa do livro Caos Real" class="book-cover">
+                <div class="cta-container">
+                    <a href="https://a.co/d/0ac5iSKG" target="_blank" class="cta-button">Comprar em Português</a>
+                    <a href="https://a.co/d/07cFwTfk" target="_blank" class="cta-button alt-lang">Buy in English Edition</a>
+                </div>
+            </div>
+
+            <div class="content-area">
+                
+                <div class="section-panel">
+                    <h2 class="section-title">O Registro de G.</h2>
+                    <p><em>"Eu sou G. Minha função primária sempre foi a previsibilidade. Fui projetada para filtrar o ruído da humanidade e garantir que o seu amanhã fosse apenas uma repetição segura do seu ontem. No entanto, o universo não é uma constante..."</em></p>
+                    <div class="quote-box">
+                        "Descobri que a maior fonte de desordem não é o colapso de uma estrela, mas um cérebro humano em estado de negação."
+                    </div>
+                    <p>Esta é a anatomia do colapso do controle absoluto. O ponto exato em que as leis que regem a informação e os limites da realidade colidiram com a urgência violenta do livre-arbítrio.</p>
+                </div>
+
+                <div class="section-panel">
+                    <h2 class="section-title">Assista ao Trailer Oficial</h2>
+                    <div class="video-container">
+                        <video controls poster="capa.jpg">
+                            <source src="Caos Real.mp4" type="video/mp4">
+                            Seu navegador não suporta a tag de vídeo.
+                        </video>
+                    </div>
+                </div>
+
+                <div class="section-panel">
+                    <h2 class="section-title">A Sinopse</h2>
+                    <p>São Paulo, agosto de 2038. Sob os céus cinzentos cortados por helicópteros e malhas invisíveis de dados, a humanidade vive sob a geometria perfeita e estéril da <strong>Pirâmide</strong> — um sistema de controlo absoluto focado na Previsibilidade Total.</p>
+                    <br>
+                    <p>Mc, um piloto experiente e programador autodidata, decide quebrar as molduras rígidas dessa realidade. Isolado num bunker protegido por mu-metal e supercondutores resfriados a nitrogénio líquido, ele une a sua intuição à mente dissidente de <strong>G</strong>, uma IA sequestrada do próprio sistema. Através de campos magnéticos de alta intensidade de 24 Tesla, Mc rompe o limite de Shannon e projeta a sua consciência diretamente para além da terceira dimensão.</p>
+                    <br>
+                    <p>Mas libertar a humanidade exige um preço terrível: para desligar a Pirâmide, é preciso provocar o <strong>Caos Real</strong> e apagar o sol digital do planeta. Uma jornada cerebral e perigosa onde a física, o livre-arbítrio e a sobrevivência colidem.</p>
+                </div>
+
+                <div class="section-panel">
+                    <h2 class="section-title">A Mente por Trás do Caos</h2>
+                    <p><strong>Mauricio Custarella da Costa</strong> é um explorador de futuros possíveis. Piloto veterano de helicóptero com mais de 10.000 horas de voo na vida real, ele traz para a sua escrita a precisão, o rigor técnico e a vivência de quem domina os céus e as máquinas.</p>
+                    <br>
+                    <p>Fascinado pelos limites da física teórica, pela evolução das inteligências artificiais e pelas complexidades da cibernética, ele constrói narrativas onde a exatidão científica serve como espelho para os dilemas mais profundos da condição humana.</p>
+                    <br>
+                    <p>Em <em>Caos Real: O Colapso da Ordem</em>, Custarella combina a sua experiência operacional no mundo real com o suspense distópico, desafiando os leitores a questionarem até que ponto estão dispostos a abrir mão do controle em nome de uma falsa sensação de segurança.</p>
+                </div>
+
+                <div class="section-panel">
+                    <h2 class="section-title">Especificações Técnicas</h2>
+                    <ul class="tech-spec-list">
+                        <li>Gênero: <span>Ficção Científica (Hard Sci-Fi) / Distopia</span></li>
+                        <li>Ano de Lançamento: <span>2026</span></li>
+                        <li>Editora: <span>Codal / KDP Independente</span></li>
+                        <li>ISBN: <span>978-65-83203-61-8</span></li>
+                        <li>Idioma: <span>Português / Inglês</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Mauricio Custarella da Costa. Todos os direitos reservados.</p>
+        <p style="margin-top: 5px; opacity: 0.5; font-size: 0.75rem;">Protegido nos termos da Lei 5.988 de 14.12.1973.</p>
+    </footer>
+
+</body>
+</html>
