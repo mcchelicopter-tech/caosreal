@@ -164,6 +164,27 @@
             box-shadow: var(--neon-glow);
         }
 
+        /* Estilo do Botão WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: #ffffff;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            background-color: #128c7e;
+        }
+
         .content-area {
             display: flex;
             flex-direction: column;
@@ -250,6 +271,10 @@
         <h1>Caos Real</h1>
         <div class="subtitle">O Colapso da Ordem</div>
     </header>
+
+    <a href="https://wa.me/+5511947018996" target="_blank" class="whatsapp-float">
+        Contato
+    </a>
 
     <div class="container">
         <div class="main-grid">
